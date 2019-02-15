@@ -4,6 +4,8 @@ import com.learning.arydz.server.concurrent.ThreadedTCPHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.net.ServerSocketFactory;
+import javax.net.ssl.SSLServerSocketFactory;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -21,7 +23,8 @@ public class TCPServer {
     }
 
     public static void start(Thread mainThread) {
-        try (ServerSocket serverSocket = new ServerSocket(SOCKET_PORT)) {
+        ServerSocketFactory ssf = SSLServerSocketFactory.getDefault();
+        try (ServerSocket serverSocket = ssf.createServerSocket(SOCKET_PORT)) {
             listenClientConnection(mainThread, serverSocket);
         }
         catch (IOException e) {

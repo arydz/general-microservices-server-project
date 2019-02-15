@@ -32,6 +32,16 @@
         <version>1.4.0</version>
         <configuration>
           <mainClass>com.learning.arydz.Application</mainClass>
+          <systemProperties>
+            <systemProperty>
+              <key>javax.net.ssl.keyStore</key>
+              <value>D:\OwnProject\keystore\mykeystore</value>
+            </systemProperty>
+            <systemProperty>
+              <key>javax.net.ssl.keyStorePassword</key>
+              <value>password</value>
+            </systemProperty>
+          </systemProperties>
         </configuration>
       </plugin>
     </plugins>
