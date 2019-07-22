@@ -1,6 +1,7 @@
 ### 1. Running mvn project
 
     https://stackoverflow.com/questions/2472376/how-do-i-execute-a-program-using-maven  
+    
     Running java application with maven:  
     mvn exec:java
     
@@ -14,4 +15,20 @@
     keytool -genkey -alias signFiles -keystore D:\OwnProject\keystore\mykeystore -validity 10000
     Show keystore info
     keytool -v -list -keystore <FileName>.keystore
+    
+### 3. Helpful java tips
+
+```java 
+public byte[] load() {
+    File file = getFileFromResources();
+    try (FileInputStream fileInputStream = new FileInputStream(file)) {
+        return getBytesFromDataFile(file, fileInputStream);
+    } catch (IOException e) {
+        logger.error(e.getMessage());
+    }
+    return throwErrorMessage();
+}
+```
+        We can replace method ```getBytesFromDataFile(file, fileInputStream);```
+        with ```Files.readAllBytes(path)```. We have to remember that it could be not efficient with bigger files.
     
